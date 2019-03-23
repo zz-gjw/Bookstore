@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.bookstore.dao.BooksDao">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.zz.bookstore.entity.Books">
+		<id column="id" property="id" />
+		<result column="booksname" property="booksname" />
+		<result column="parentid" property="parentid" />
+		<result column="price" property="price" />
+		<result column="url" property="url" />
+		<result column="flag" property="flag" />
+	</resultMap>
+
+	<resultMap id="BaseResultMap1" type="com.zz.bookstore.entity.Books">
+		<id column="id" property="id" />
+		<result column="booksname" property="booksname" />
+		<result column="parentid" property="parentid" />
+		<result column="price" property="price" />
+		<result column="url" property="url" />
+		<result column="flag" property="flag" />
+		
+		<collection property="goodscate" resultMap="com.zz.bookstore.dao.GoodscateDao.BaseResultMap"></collection>
+		<collection property="goodstyle" resultMap="com.zz.bookstore.dao.GoodstyleDao.BaseResultMap"></collection>
+	</resultMap>
+
+	<select id="selectBoodsBySort" parameterType="map" resultMap="BaseResultMap1">
+		select * from t_books b
+		INNER JOIN t_goodstyle gt
+		on b.parentid=gt.sid
+		INNER JOIN t_goodscate gc
+		on gt.cateid=gc.cid
+		<where>
+			b.flag=1
+			<if test="cid!=null">
+				and cid = #{cid}
+			</if>
+			<if test="sid!=null">
+				and sid = #{sid}
+			</if>
+		</where>
+	</select>
+
+</mapper>

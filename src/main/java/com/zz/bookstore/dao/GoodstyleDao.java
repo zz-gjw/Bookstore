@@ -1,7 +1,8 @@
 package com.zz.bookstore.dao;
 
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zz.bookstore.entity.User;
+import com.zz.bookstore.entity.Goodstyle;
 
 /**
  * <p>
@@ -9,8 +10,8 @@ import com.zz.bookstore.entity.User;
  * </p>
  *
  * @author zz-gjw
- * @since 2019-03-20
+ * @since 2019-03-21
  */
-public interface UserDao extends BaseMapper<User> {
+public interface GoodstyleDao extends BaseMapper<Goodstyle> {
 
 }

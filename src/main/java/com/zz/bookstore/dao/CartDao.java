@@ -1,7 +1,8 @@
 package com.zz.bookstore.dao;
 
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zz.bookstore.entity.User;
+import com.zz.bookstore.entity.Cart;
 
 /**
  * <p>
@@ -11,6 +12,6 @@ import com.zz.bookstore.entity.User;
  * @author zz-gjw
  * @since 2019-03-20
  */
-public interface UserDao extends BaseMapper<User> {
+public interface CartDao extends BaseMapper<Cart> {
 
 }

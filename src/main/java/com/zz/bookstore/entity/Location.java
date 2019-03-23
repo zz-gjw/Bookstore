@@ -4,10 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * <p>
@@ -17,17 +14,17 @@ import java.util.Date;
  * @author zz-gjw
  * @since 2019-03-20
  */
-@TableName("t_user")
-public class User extends Model<User> {
+@TableName("t_location")
+public class Location extends Model<Location> {
 
     private static final long serialVersionUID = 1L;
 
 	@TableId(value="id", type= IdType.AUTO)
 	private Integer id;
-	private String username;
-	private String password;
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date createtime;
+	private Integer userid;
+	private String address;
+	private Integer phone;
+	private String name;
 	private Integer flag;
 
 
@@ -39,28 +36,36 @@ public class User extends Model<User> {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public Integer getUserid() {
+		return userid;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserid(Integer userid) {
+		this.userid = userid;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public Date getCreatetime() {
-		return createtime;
+	public Integer getPhone() {
+		return phone;
 	}
 
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
+	public void setPhone(Integer phone) {
+		this.phone = phone;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Integer getFlag() {
