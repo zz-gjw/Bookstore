@@ -1,6 +1,7 @@
 package com.zz.bookstore.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -29,6 +30,16 @@ public class Cart extends Model<Cart> {
 	private Date creatime;
 	private Integer flag;
 
+	@TableField(exist = false)
+	private Books books;
+
+	public Books getBooks() {
+		return books;
+	}
+
+	public void setBooks(Books books) {
+		this.books = books;
+	}
 
 	public Integer getId() {
 		return id;

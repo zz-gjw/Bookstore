@@ -2,6 +2,7 @@ package com.zz.bookstore.serviceimpl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zz.bookstore.common.token.TokenUtil;
 import com.zz.bookstore.common.util.ResultUtil;
 import com.zz.bookstore.common.vo.ResultVo;
@@ -12,6 +13,9 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * <p>
  *  服务实现类
@@ -21,7 +25,7 @@ import org.springframework.stereotype.Service;
  * @since 2019-03-20
  */
 @Service
-public class UserdetailServiceImpl implements UserdetailService {
+public class UserdetailServiceImpl extends ServiceImpl<UserdetailDao, Userdetail> implements UserdetailService {
     @Autowired
     private UserdetailDao userdetailDao;
 
@@ -34,23 +38,5 @@ public class UserdetailServiceImpl implements UserdetailService {
 
         Userdetail userdetail = userdetailDao.selectOne(queryWrapper);
         return ResultUtil.exec(true,"ok",userdetail);
-    }
-
-    @Override
-    public ResultVo uUdetailByUid(Userdetail userdetail, String token) {
-        //从token中获取用户id
-        int uid = TokenUtil.parseToken(token).getId();
-
-        Userdetail a = new Userdetail();
-        a.setNickname(userdetail.getNickname());
-        a.setSex(userdetail.getSex());
-        a.setBirthday(userdetail.getBirthday());
-        a.setUrl(userdetail.getUrl());
-
-        UpdateWrapper<Userdetail> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.eq("userid",uid);
-
-        int b = userdetailDao.update(a,updateWrapper);
-        return ResultUtil.exec(true,"ok",null);
     }
 }

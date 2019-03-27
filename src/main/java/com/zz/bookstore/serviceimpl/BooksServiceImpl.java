@@ -30,10 +30,29 @@ public class BooksServiceImpl implements BooksService {
         Map map = new HashMap();
         map.put("cid",cid);
         map.put("sid",sid);
-        List<Books> list = booksDao.selectBoodsBySort(map);
+        List<Books> list = booksDao.selectBooksBySort(map);
         if(list!=null){
             return ResultUtil.exec(true,"ok",list);
         }
         return ResultUtil.exec(false,"",null);
+    }
+
+    @Override
+    public ResultVo showBooksDetail(Integer id) {
+        Books books = booksDao.selectBooksDetail(id);
+        if(books!=null){
+            return ResultUtil.exec(true,"ok",books);
+        }
+        return ResultUtil.exec(false,"未查询到数据",null);
+    }
+
+    @Override
+    public ResultVo showBooksMh(String booksname) {
+        booksname = "%"+booksname+"%";
+        List<Books> list = booksDao.selectBooksMh(booksname);
+        if(list!=null){
+            return ResultUtil.exec(true,"ok",list);
+        }
+        return ResultUtil.exec(false,"未查询到数据",null);
     }
 }

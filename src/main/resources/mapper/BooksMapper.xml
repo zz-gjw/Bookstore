@@ -24,7 +24,18 @@
 		<collection property="goodstyle" resultMap="com.zz.bookstore.dao.GoodstyleDao.BaseResultMap"></collection>
 	</resultMap>
 
-	<select id="selectBoodsBySort" parameterType="map" resultMap="BaseResultMap1">
+	<resultMap id="BaseResultMap2" type="com.zz.bookstore.entity.Books">
+		<id column="id" property="id" />
+		<result column="booksname" property="booksname" />
+		<result column="parentid" property="parentid" />
+		<result column="price" property="price" />
+		<result column="url" property="url" />
+		<result column="flag" property="flag" />
+
+		<collection property="booksdetail" resultMap="com.zz.bookstore.dao.BooksdetailDao.BaseResultMap"></collection>
+	</resultMap>
+
+	<select id="selectBooksBySort" parameterType="map" resultMap="BaseResultMap1">
 		select * from t_books b
 		INNER JOIN t_goodstyle gt
 		on b.parentid=gt.sid
@@ -37,6 +48,22 @@
 			</if>
 			<if test="sid!=null">
 				and sid = #{sid}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectBooksDetail" parameterType="int" resultMap="BaseResultMap2">
+		select * from t_books b
+		inner join t_booksdetail bd
+		on b.id=bd.booksid
+		where b.id=#{id}
+	</select>
+
+	<select id="selectBooksMh" resultType="String" resultMap="BaseResultMap">
+		select * from t_books
+		<where>
+			<if test="booksname!=null and booksname!=''">
+				and booksname like #{booksname}
 			</if>
 		</where>
 	</select>

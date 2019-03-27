@@ -5,9 +5,18 @@
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.zz.bookstore.entity.Orderdetail">
 		<id column="id" property="id" />
+		<result column="booksid" property="booksid" />
+		<result column="num" property="num" />
 		<result column="orderid" property="orderid" />
-		<result column="locationid" property="locationid" />
-		<result column="creatime" property="creatime" />
+	</resultMap>
+
+	<resultMap id="BaseResultMap1" type="com.zz.bookstore.entity.Orderdetail">
+		<id column="id" property="id" />
+		<result column="booksid" property="booksid" />
+		<result column="num" property="num" />
+		<result column="orderid" property="orderid" />
+
+		<collection property="books" resultMap="com.zz.bookstore.dao.BooksDao.BaseResultMap"></collection>
 	</resultMap>
 
 </mapper>

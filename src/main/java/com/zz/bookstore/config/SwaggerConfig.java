@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
     public ApiInfo createApi(){
         return new ApiInfoBuilder().title("个人项目项目接口文档").
-                description("为了更好的融入团队，模拟真实的企业开发环境").
+                description("模拟真实的企业开发环境").
                 contact(new Contact("zz_gjw","http://1000phone.com","zz_gjw@189.com")).build();
     }
     @Bean  //等价于 <bean>标签

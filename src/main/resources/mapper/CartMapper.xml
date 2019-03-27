@@ -12,4 +12,22 @@
 		<result column="flag" property="flag" />
 	</resultMap>
 
+	<resultMap id="BaseResultMap1" type="com.zz.bookstore.entity.Cart">
+		<id column="id" property="id" />
+		<result column="booksid" property="booksid" />
+		<result column="num" property="num" />
+		<result column="userid" property="userid" />
+		<result column="creatime" property="creatime" />
+		<result column="flag" property="flag" />
+
+		<collection property="books" resultMap="com.zz.bookstore.dao.BooksDao.BaseResultMap"></collection>
+	</resultMap>
+
+	<select id="selectCartByUid" parameterType="int" resultMap="BaseResultMap1">
+		select * from t_cart c
+		inner join t_books b
+		on c.booksid=b.id
+		where userid = #{userid}
+	</select>
+
 </mapper>

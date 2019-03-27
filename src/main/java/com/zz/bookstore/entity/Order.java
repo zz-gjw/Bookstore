@@ -1,10 +1,13 @@
 package com.zz.bookstore.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -12,7 +15,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author zz-gjw
- * @since 2019-03-20
+ * @since 2019-03-25
  */
 @TableName("t_order")
 public class Order extends Model<Order> {
@@ -22,12 +25,24 @@ public class Order extends Model<Order> {
 	@TableId(value="id", type= IdType.AUTO)
 	private Integer id;
 	private String number;
-	private Integer booksid;
-	private Integer num;
+	private Double totalprice;
+	private Date createtime;
 	private Integer state;
 	private Integer userid;
+	private String address;
+	private Integer phone;
+	private String oname;
 	private Integer flag;
 
+	@TableField(exist = false)
+	private Orderdetail orderdetail;
+	public Orderdetail getOrderdetail() {
+		return orderdetail;
+	}
+
+	public void setOrderdetail(Orderdetail orderdetail) {
+		this.orderdetail = orderdetail;
+	}
 
 	public Integer getId() {
 		return id;
@@ -45,20 +60,20 @@ public class Order extends Model<Order> {
 		this.number = number;
 	}
 
-	public Integer getBooksid() {
-		return booksid;
+	public Double getTotalprice() {
+		return totalprice;
 	}
 
-	public void setBooksid(Integer booksid) {
-		this.booksid = booksid;
+	public void setTotalprice(Double totalprice) {
+		this.totalprice = totalprice;
 	}
 
-	public Integer getNum() {
-		return num;
+	public Date getCreatetime() {
+		return createtime;
 	}
 
-	public void setNum(Integer num) {
-		this.num = num;
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
 	}
 
 	public Integer getState() {
@@ -75,6 +90,30 @@ public class Order extends Model<Order> {
 
 	public void setUserid(Integer userid) {
 		this.userid = userid;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Integer getPhone() {
+		return phone;
+	}
+
+	public void setPhone(Integer phone) {
+		this.phone = phone;
+	}
+
+	public String getOname() {
+		return oname;
+	}
+
+	public void setOname(String oname) {
+		this.oname = oname;
 	}
 
 	public Integer getFlag() {

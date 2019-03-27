@@ -19,5 +19,9 @@ public interface BooksService{
      * @return
      */
     ResultVo showBooksSort(Integer cid, Integer sid);
+
+    ResultVo showBooksDetail(Integer id);
+
+    ResultVo showBooksMh(String booksname);
 	
 }

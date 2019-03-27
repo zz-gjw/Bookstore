@@ -1,6 +1,7 @@
 package com.zz.bookstore.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zz.bookstore.common.vo.ResultVo;
 import com.zz.bookstore.entity.Cart;
 
 /**
@@ -12,5 +13,6 @@ import com.zz.bookstore.entity.Cart;
  * @since 2019-03-21
  */
 public interface CartService extends IService<Cart> {
+    ResultVo showCartByUid(String token);
 	
 }

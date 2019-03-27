@@ -61,6 +61,18 @@ public class BooksController {
         return booksService.showBooksSort(cid, sid);
     }
 
+    @ApiOperation(value = "展示books的详情",notes = "根据商品id，展示商品详情页")
+    @GetMapping("showBooksDetail.do")
+    public ResultVo showBooksDetail(Integer id){
+        return booksService.showBooksDetail(id);
+    }
+
+    @ApiOperation(value = "模糊搜索", notes = "根据输入的名称  进行模糊查找")
+    @GetMapping("showBooksMh.do")
+    public ResultVo showBooksMh(String booksname){
+        return booksService.showBooksMh(booksname);
+    }
+
    /* @ApiOperation(value = "abc", notes = "qwe")
     @PostMapping("updata.do")
     public String updata(Goodstyle a, Integer cateid){

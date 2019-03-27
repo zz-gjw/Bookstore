@@ -6,11 +6,46 @@
 	<resultMap id="BaseResultMap" type="com.zz.bookstore.entity.Order">
 		<id column="id" property="id" />
 		<result column="number" property="number" />
-		<result column="booksid" property="booksid" />
-		<result column="num" property="num" />
+		<result column="totalprice" property="totalprice" />
+		<result column="createtime" property="createtime" />
 		<result column="state" property="state" />
 		<result column="userid" property="userid" />
+		<result column="address" property="address" />
+		<result column="phone" property="phone" />
+		<result column="oname" property="oname" />
 		<result column="flag" property="flag" />
 	</resultMap>
+
+	<resultMap id="BaseResultMap1" type="com.zz.bookstore.entity.Order">
+		<id column="id" property="id" />
+		<result column="number" property="number" />
+		<result column="totalprice" property="totalprice" />
+		<result column="createtime" property="createtime" />
+		<result column="state" property="state" />
+		<result column="userid" property="userid" />
+		<result column="address" property="address" />
+		<result column="phone" property="phone" />
+		<result column="oname" property="oname" />
+		<result column="flag" property="flag" />
+
+		<collection property="orderdetail" resultMap="com.zz.bookstore.dao.OrderdetailDao.BaseResultMap1"></collection>
+	</resultMap>
+
+	<select id="selectOrder" resultMap="BaseResultMap1">
+		select * from t_order o
+		inner join t_orderdetail od
+		on o.id=od.orderid
+		inner join t_books b
+		on od.booksid=b.id
+		<where>
+			o.flag=1
+			<if test="userid!=null">
+				and userid = #{userid}
+			</if>
+			<if test="state!=null">
+				and state = #{state}
+			</if>
+		</where>
+	</select>
 
 </mapper>

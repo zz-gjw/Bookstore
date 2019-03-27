@@ -2,6 +2,7 @@ package com.zz.bookstore.serviceimpl;
 
 import com.alibaba.druid.sql.visitor.functions.Now;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zz.bookstore.common.token.TokenUtil;
 import com.zz.bookstore.common.util.ResultUtil;
 import com.zz.bookstore.common.vo.ResultVo;
@@ -26,7 +27,7 @@ import java.util.Objects;
  * @since 2019-03-20
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserService {
     @Autowired
     private UserDao userDao;
 

@@ -1,11 +1,12 @@
 package com.zz.bookstore.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * <p>
@@ -13,7 +14,7 @@ import java.util.Date;
  * </p>
  *
  * @author zz-gjw
- * @since 2019-03-20
+ * @since 2019-03-25
  */
 @TableName("t_orderdetail")
 public class Orderdetail extends Model<Orderdetail> {
@@ -22,10 +23,20 @@ public class Orderdetail extends Model<Orderdetail> {
 
 	@TableId(value="id", type= IdType.AUTO)
 	private Integer id;
+	private Integer booksid;
+	private Integer num;
 	private Integer orderid;
-	private Integer locationid;
-	private Date creatime;
 
+	@TableField(exist = false)
+	private Books books;
+
+	public Books getBooks() {
+		return books;
+	}
+
+	public void setBooks(Books books) {
+		this.books = books;
+	}
 
 	public Integer getId() {
 		return id;
@@ -35,28 +46,28 @@ public class Orderdetail extends Model<Orderdetail> {
 		this.id = id;
 	}
 
+	public Integer getBooksid() {
+		return booksid;
+	}
+
+	public void setBooksid(Integer booksid) {
+		this.booksid = booksid;
+	}
+
+	public Integer getNum() {
+		return num;
+	}
+
+	public void setNum(Integer num) {
+		this.num = num;
+	}
+
 	public Integer getOrderid() {
 		return orderid;
 	}
 
 	public void setOrderid(Integer orderid) {
 		this.orderid = orderid;
-	}
-
-	public Integer getLocationid() {
-		return locationid;
-	}
-
-	public void setLocationid(Integer locationid) {
-		this.locationid = locationid;
-	}
-
-	public Date getCreatime() {
-		return creatime;
-	}
-
-	public void setCreatime(Date creatime) {
-		this.creatime = creatime;
 	}
 
 	@Override

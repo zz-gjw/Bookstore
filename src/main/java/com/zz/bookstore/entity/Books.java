@@ -2,6 +2,7 @@ package com.zz.bookstore.entity;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -29,8 +30,18 @@ public class Books extends Model<Books> {
 	private String url;
 	private Integer flag;
 
+	@TableField(exist = false)
+	private Booksdetail booksdetail;
 	private Goodscate goodscate;
 	private Goodstyle goodstyle;
+
+	public Booksdetail getBooksdetail() {
+		return booksdetail;
+	}
+
+	public void setBooksdetail(Booksdetail booksdetail) {
+		this.booksdetail = booksdetail;
+	}
 
 	public Goodscate getGoodscate() {
 		return goodscate;
