@@ -3,7 +3,9 @@ package com.zz.bookstore.serviceimpl;
 import com.alibaba.druid.sql.visitor.functions.Now;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zz.bookstore.common.sysconst.SystemConst;
 import com.zz.bookstore.common.token.TokenUtil;
+import com.zz.bookstore.common.util.JedisUtil;
 import com.zz.bookstore.common.util.ResultUtil;
 import com.zz.bookstore.common.vo.ResultVo;
 import com.zz.bookstore.dao.UserDao;
@@ -33,6 +35,9 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
 
     @Autowired
     private UserdetailDao userdetailDao;
+
+    @Autowired
+    private JedisUtil jedisUtil;
 
     @Override
     @Transactional
@@ -74,7 +79,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
                 //1、生成Token
                 String token= TokenUtil.createToken(user);
                 //2、将Token到Redis
-                //jedisUtil.save(SystemConst.TOKENMAP,"user:"+token, user.getPhone());
+                jedisUtil.save(SystemConst.TOKENMAP,"user:"+token, user.getUsername());
                 //3、将Token到前端
                 return ResultUtil.exec(true,"ok",token);
             }
