@@ -24,7 +24,7 @@
         <swagger.version>2.9.2</swagger.version>
         <jedis.version>3.0.1</jedis.version>
         <mybatis-plus.version>3.0.6</mybatis-plus.version>
-        <jackson-databind.version>2.9.8</jackson-databind.version>
+        <jackson-databind.version>2.9.10.8</jackson-databind.version>
         <fastjson.version>1.2.54</fastjson.version>
     </properties>
 
