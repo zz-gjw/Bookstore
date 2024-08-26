@@ -21,7 +21,7 @@
         <mail.version>1.6.2</mail.version>
         <druid.version>1.1.14</druid.version>
         <lombok.version>1.18.6</lombok.version>
-        <swagger.version>2.9.2</swagger.version>
+        <swagger.version>2.10.0</swagger.version>
         <jedis.version>3.0.1</jedis.version>
         <mybatis-plus.version>3.0.6</mybatis-plus.version>
         <jackson-databind.version>2.9.8</jackson-databind.version>
